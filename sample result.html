@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dijkstra Path Visualization</title>
+<style>
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6DD5FA, #2980B9, #1e3c72);
+    color: #333;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 4px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+td {
+    border: none;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    background: #f5f6fa;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+td:first-child {
+    background: #2980B9;
+    color: white;
+    font-weight: bold;
+}
+tr:first-child td {
+    background: #2980B9;
+    color: white;
+    font-weight: bold;
+}
+.path {
+    background: linear-gradient(45deg, #FF416C, #FF4B2B);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+    transform: scale(1.05);
+}
+.path-info {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.path-arrow {
+    color: #2980B9;
+    font-size: 1.5em;
+    margin: 0 10px;
+}
+.total-distance {
+    font-size: 1.2em;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 10px;
+    background: #f5f6fa;
+    border-radius: 5px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Dijkstra's Shortest Path Visualization</h1>
+<table>
+    <tr><td></td><td>Node 1</td><td>Node 2</td><td>Node 3</td><td>Node 4</td><td>Node 5</td><td>Node 6</td><td>Node 7</td><td>Node 8</td><td>Node 9</td><td>Node 10</td></tr>
+    <tr><td>Node 1</td><td>-</td><td>20.00</td><td>32.00</td><td>34.00</td><td>4.00</td><td>3.00</td><td>54.00</td><td>34.00</td><td>1.00</td><td>76.00</td></tr>
+    <tr><td>Node 2</td><td>20.00</td><td>-</td><td>25.00</td><td>23.00</td><td>43.00</td><td class='path'>6.00</td><td>75.00</td><td>67.00</td><td>8.00</td><td>45.00</td></tr>
+    <tr><td>Node 3</td><td>32.00</td><td>25.00</td><td>-</td><td>29.00</td><td>12.00</td><td>34.00</td><td>13.00</td><td>53.00</td><td>73.00</td><td>43.00</td></tr>
+    <tr><td>Node 4</td><td>34.00</td><td>23.00</td><td>29.00</td><td>-</td><td>13.00</td><td>13.00</td><td>14.00</td><td>3.00</td><td>57.00</td><td>35.00</td></tr>
+    <tr><td>Node 5</td><td>4.00</td><td>43.00</td><td>12.00</td><td>13.00</td><td>-</td><td>25.00</td><td>146.00</td><td>2.00</td><td>4.00</td><td>64.00</td></tr>
+    <tr><td>Node 6</td><td>3.00</td><td class='path'>6.00</td><td>34.00</td><td>13.00</td><td>25.00</td><td>-</td><td>335.00</td><td>135.00</td><td class='path'>1.00</td><td>2.00</td></tr>
+    <tr><td>Node 7</td><td>54.00</td><td>75.00</td><td>13.00</td><td>14.00</td><td>146.00</td><td>335.00</td><td>-</td><td>43.00</td><td class='path'>5.00</td><td>23.00</td></tr>
+    <tr><td>Node 8</td><td>34.00</td><td>67.00</td><td>53.00</td><td>3.00</td><td>2.00</td><td>135.00</td><td>43.00</td><td>-</td><td>76.00</td><td>35.00</td></tr>
+    <tr><td>Node 9</td><td>1.00</td><td>8.00</td><td>73.00</td><td>57.00</td><td>4.00</td><td class='path'>1.00</td><td class='path'>5.00</td><td>76.00</td><td>-</td><td>23.00</td></tr>
+    <tr><td>Node 10</td><td>76.00</td><td>45.00</td><td>43.00</td><td>35.00</td><td>64.00</td><td>2.00</td><td>23.00</td><td>35.00</td><td>23.00</td><td>-</td></tr>
+    </table>
+    
+<div class="path-info">
+<h2>Shortest Path</h2>
+<p>Node 2<span class="path-arrow">→</span>Node 6<span class="path-arrow">→</span>Node 9<span class="path-arrow">→</span>Node 7</p>
+<div class="total-distance">Total Distance: 12.00</div>
+</div>
+</div>
+</body>
+</html>
